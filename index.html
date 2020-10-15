@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jquery.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:auto;min-height:600px;width: 1000px;margin:auto;"></div>
+    <script type="text/javascript">
+    jQuery.support.cors = true;
+    var myChart = echarts.init(document.getElementById('main'));
+    $.get('./data/a.json', function (data) {
+        myChart.setOption(option = {
+            title: {
+                text: 'A股历史数据'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                data: data.map(function (item) {
+                    return item[0];
+                })
+            },
+            yAxis: {
+                splitLine: {
+                    show: false
+                }
+            },
+            toolbox: {
+                left: 'center',
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            dataZoom: [{
+                startValue: '2020-02-03'
+            }, {
+                type: 'inside'
+            }],
+            visualMap: {
+                top: 10,
+                right: 10,
+                pieces: [{
+                    gt: 0,
+                    lte: 500,
+                    color: '#F5F5F5'
+                }, {
+                    gt: 500,
+                    lte: 1000,
+                    color: '#FFE5DB'
+                }, {
+                    gt: 1000,
+                    lte: 1500,
+                    color: '#FFC4B3'
+                }, {
+                    gt: 1500,
+                    lte: 2000,
+                    color: '#FF9985'
+                }, {
+                    gt: 2000,
+                    lte: 2500,
+                    color: '#F57567'
+                }, {
+                    gt: 2500,
+                    lte: 3000,
+                    color: '#E64546'
+                }, {
+                    gt: 3000,
+                    lte: 3500,
+                    color: '#FF2121'
+                }, {
+                    gt: 3500,
+                    lte: 4000,
+                    color: '#B80909'
+                },{
+                    gt: 4000,
+                    color: '#8A0808'
+                }],
+                outOfRange: {
+                    color: '#999'
+                }
+            },
+            series: {
+                name: 'A股历史数据',
+                type: 'line',
+                data: data.map(function (item) {
+                    return item[1];
+                }),
+                markLine: {
+                    silent: true,
+                    data: [{
+                        yAxis: 500
+                    }, {
+                        yAxis: 1000
+                    }, {
+                        yAxis: 1500
+                    }, {
+                        yAxis: 2000
+                    }, {
+                        yAxis: 2500
+                    }, {
+                        yAxis: 3000
+                    }, {
+                        yAxis: 3500
+                    }, {
+                        yAxis: 4000
+                    }]
+                }
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>
