@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height:100%;">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -8,9 +8,9 @@
     <script src="./js/echarts.min.js"></script>
     <script src="./js/jquery.js"></script>
 </head>
-<body>
+<body style="height: 100%; margin: auto;">
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="height:auto;min-height:600px;width: 1000px;margin:auto;"></div>
+    <div id="main" style="height: 90%; margin:auto;"></div>
     <script type="text/javascript">
     jQuery.support.cors = true;
     var myChart = echarts.init(document.getElementById('main'));
