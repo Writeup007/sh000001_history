@@ -3,4 +3,4 @@
 
 A股历史数据走势图预览地址：
 
-https://writeup001.github.io/sh000001_history
+https://writeup007.github.io/sh000001_history
